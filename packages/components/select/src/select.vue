@@ -23,6 +23,7 @@
       :gpu-acceleration="false"
       :persistent="persistent"
       @show="handleMenuEnter"
+      :show-arrow="showArrow"
     >
       <template #default>
         <div
@@ -555,6 +556,10 @@ export default defineComponent({
     ariaLabel: {
       type: String,
       default: undefined,
+    },
+    showArrow: {
+      type: Boolean,
+      default: true,
     },
   },
   emits: [
