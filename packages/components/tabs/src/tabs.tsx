@@ -201,7 +201,6 @@ const Tabs = defineComponent({
 
       const header = (
         <div class={[ns.e('header'), ns.is(props.tabPosition)]}>
-          {newButton}
           <TabNav
             ref={nav$}
             currentName={currentName.value}
@@ -212,6 +211,7 @@ const Tabs = defineComponent({
             onTabClick={handleTabClick}
             onTabRemove={handleTabRemove}
           />
+          {newButton}
         </div>
       )
 
