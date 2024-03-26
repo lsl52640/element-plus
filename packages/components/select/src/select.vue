@@ -24,6 +24,7 @@
       :persistent="persistent"
       @before-show="handleMenuEnter"
       @hide="states.isBeforeHide = false"
+      @show-arrow="showArrow"
     >
       <template #default>
         <div
