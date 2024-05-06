@@ -23,9 +23,9 @@ export type AutocompleteFetchSuggestionsCallback = (
 ) => void
 export type AutocompleteFetchSuggestions =
   | ((
-      queryString: string,
-      cb: AutocompleteFetchSuggestionsCallback
-    ) => Awaitable<AutocompleteData> | void)
+    queryString: string,
+    cb: AutocompleteFetchSuggestionsCallback
+  ) => Awaitable<AutocompleteData> | void)
   | AutocompleteData
 
 export const autocompleteProps = buildProps({
@@ -97,6 +97,10 @@ export const autocompleteProps = buildProps({
    * @description whether to hide the loading icon in remote search
    */
   hideLoading: {
+    type: Boolean,
+    default: false,
+  },
+  showArrow: {
     type: Boolean,
     default: false,
   },

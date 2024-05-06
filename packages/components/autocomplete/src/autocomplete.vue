@@ -14,6 +14,7 @@
     :transition="`${ns.namespace.value}-zoom-in-top`"
     persistent
     role="listbox"
+    :show-arrow="showArrow"
     @before-show="onSuggestionShow"
     @hide="onHide"
   >

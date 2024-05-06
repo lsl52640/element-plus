@@ -52,7 +52,7 @@
         <el-only-child
           :id="triggerId"
           ref="triggeringElementRef"
-          role="button"
+          role="menu"
           :tabindex="tabindex"
         >
           <slot name="default" />
