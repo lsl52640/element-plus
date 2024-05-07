@@ -40,7 +40,7 @@ export const buildModules = async () => {
       }),
       commonjs(),
       esbuild({
-        sourceMap: true,
+        sourceMap: false,
         target,
         loaders: {
           '.vue': 'ts',
