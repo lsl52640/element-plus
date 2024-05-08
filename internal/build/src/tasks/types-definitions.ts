@@ -43,12 +43,13 @@ export const generateTypesDefinitions = async () => {
   typeCheck(project)
   consola.success('Type check passed!')
 
-  await project.emitSync({
+  await project.emitToMemory({
     emitOnlyDtsFiles: true,
   })
   consola.success('Type emit!')
 
-  const tasks = sourceFiles.map(async (sourceFile) => {
+  // eslint-disable-next-line array-callback-return
+  const tasks = sourceFiles.map((sourceFile) => {
     const relativePath = path.relative(pkgRoot, sourceFile.getFilePath())
     consola.trace(
       chalk.yellow(
@@ -81,10 +82,10 @@ export const generateTypesDefinitions = async () => {
       )
     })
 
-    await Promise.all(subTasks)
+    // Promise.all(subTasks)
   })
 
-  await Promise.all(tasks)
+  //await Promise.all(tasks)
 }
 
 async function addSourceFiles(project: Project) {
