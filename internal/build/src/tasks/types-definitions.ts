@@ -60,17 +60,13 @@ export const generateTypesDefinitions = async () => {
     if (emitFiles.length === 0) {
       throw new Error(`Emit no file: ${chalk.bold(relativePath)}`)
     }
-
+    chalk.green(`Definition for subTasks`)
     const subTasks = emitFiles.map(async (outputFile) => {
       const filepath = outputFile.getFilePath()
       await mkdir(path.dirname(filepath), {
         recursive: true,
       })
-      consola.success(
-        chalk.green(
-          `Definition for file2: ${filepath}`
-        )
-      )
+      consola.success(chalk.green(`Definition for file2: ${filepath}`))
       await writeFile(
         filepath,
         pathRewriter('esm')(outputFile.getText()),
