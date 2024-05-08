@@ -64,11 +64,7 @@ export const generateTypesDefinitions = async () => {
         recursive: true,
       })
       consola.success('Type emit!5555')
-      await writeFile(
-        filepath,
-        pathRewriter('esm')(outputFile.getText()),
-        'utf8'
-      )
+      await writeFile(filepath, outputFile.getText(), 'utf8')
       consola.success('Type emit!6666')
     }
     // Promise.all(subTasks)
