@@ -49,7 +49,7 @@ export const generateTypesDefinitions = async () => {
   consola.success('Type emit!')
 
   // eslint-disable-next-line array-callback-return
-  const tasks = sourceFiles.map((sourceFile) => {
+  const tasks = sourceFiles.map(async (sourceFile) => {
     const relativePath = path.relative(pkgRoot, sourceFile.getFilePath())
     consola.success('Type emit2222')
     const emitOutput = sourceFile.getEmitOutput()
@@ -58,7 +58,7 @@ export const generateTypesDefinitions = async () => {
       throw new Error(`Emit no file: ${chalk.bold(relativePath)}`)
     }
     consola.success('Type emit33333')
-    const subTasks = emitFiles.map(async (outputFile) => {
+    for (const outputFile of emitFiles) {
       const filepath = outputFile.getFilePath()
       await mkdir(path.dirname(filepath), {
         recursive: true,
@@ -70,7 +70,7 @@ export const generateTypesDefinitions = async () => {
         'utf8'
       )
       consola.success('Type emit!6666')
-    })
+    }
     // Promise.all(subTasks)
   })
   //await Promise.all(tasks)
