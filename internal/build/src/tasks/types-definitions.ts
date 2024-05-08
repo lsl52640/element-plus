@@ -46,6 +46,7 @@ export const generateTypesDefinitions = async () => {
   await project.emit({
     emitOnlyDtsFiles: true,
   })
+  consola.success('Type emit!')
 
   const tasks = sourceFiles.map(async (sourceFile) => {
     const relativePath = path.relative(pkgRoot, sourceFile.getFilePath())
