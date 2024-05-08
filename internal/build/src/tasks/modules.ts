@@ -59,7 +59,7 @@ export const buildModules = async () => {
         exports: module === 'cjs' ? 'named' : undefined,
         preserveModules: true,
         preserveModulesRoot: epRoot,
-        sourcemap: true,
+        sourcemap: false,
         entryFileNames: `[name].${config.ext}`,
       }
     })
