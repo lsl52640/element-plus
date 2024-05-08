@@ -59,7 +59,8 @@ export default series(
       copyFullStyle
     )
   ),
-  parallel(copyTypesDefinitions, copyFiles)
+  //copyTypesDefinitions,
+  copyFiles,
 )
 
 export * from './src'
