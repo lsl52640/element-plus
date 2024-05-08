@@ -48,18 +48,19 @@ export const generateTypesDefinitions = async () => {
   })
   consola.success('Type emit!')
   for (const sourceFile of sourceFiles) {
-    consola.success('Type emit2222')
     const emitOutput = sourceFile.getEmitOutput()
     const emitFiles = emitOutput.getOutputFiles()
     if (emitFiles.length > 0) {
-      consola.success(`Type emit33333:${sourceFile}`)
       for (const outputFile of emitFiles) {
         const filepath = outputFile.getFilePath()
         await mkdir(path.dirname(filepath), {
           recursive: true,
         })
-        consola.success('Type emit!5555')
-        await writeFile(filepath, outputFile.getText(), 'utf8')
+        consola.success(`Type emit!5555:${outputFile.getFilePath}`)
+        await writeFile(filepath, outputFile.getText(), {
+          flush: true,
+          encoding: 'utf-8',
+        })
         consola.success(`Type emit!6666:${sourceFile}`)
       }
     }
