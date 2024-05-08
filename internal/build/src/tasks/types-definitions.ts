@@ -51,40 +51,28 @@ export const generateTypesDefinitions = async () => {
   // eslint-disable-next-line array-callback-return
   const tasks = sourceFiles.map((sourceFile) => {
     const relativePath = path.relative(pkgRoot, sourceFile.getFilePath())
-    consola.trace(
-      chalk.yellow(
-        `Generating definition for file: ${chalk.bold(relativePath)}`
-      )
-    )
-
+    consola.success('Type emit2222')
     const emitOutput = sourceFile.getEmitOutput()
     const emitFiles = emitOutput.getOutputFiles()
     if (emitFiles.length === 0) {
       throw new Error(`Emit no file: ${chalk.bold(relativePath)}`)
     }
-    chalk.green(`Definition for subTasks`)
+    consola.success('Type emit33333')
     const subTasks = emitFiles.map(async (outputFile) => {
       const filepath = outputFile.getFilePath()
       await mkdir(path.dirname(filepath), {
         recursive: true,
       })
-      consola.success(chalk.green(`Definition for file2: ${filepath}`))
+      consola.success('Type emit!5555')
       await writeFile(
         filepath,
         pathRewriter('esm')(outputFile.getText()),
         'utf8'
       )
-
-      consola.success(
-        chalk.green(
-          `Definition for file: ${chalk.bold(relativePath)} generated`
-        )
-      )
+      consola.success('Type emit!6666')
     })
-
     // Promise.all(subTasks)
   })
-
   //await Promise.all(tasks)
 }
 
