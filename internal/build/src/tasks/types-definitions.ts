@@ -48,23 +48,22 @@ export const generateTypesDefinitions = async () => {
   })
   consola.success('Type emit!')
   for (const sourceFile of sourceFiles) {
-    const relativePath = path.relative(pkgRoot, sourceFile.getFilePath())
     consola.success('Type emit2222')
     const emitOutput = sourceFile.getEmitOutput()
     const emitFiles = emitOutput.getOutputFiles()
-    if (emitFiles.length === 0) {
-      throw new Error(`Emit no file: ${chalk.bold(relativePath)}`)
+    if (emitFiles.length > 0) {
+      consola.success(`Type emit33333:${sourceFile}`)
+      for (const outputFile of emitFiles) {
+        const filepath = outputFile.getFilePath()
+        await mkdir(path.dirname(filepath), {
+          recursive: true,
+        })
+        consola.success('Type emit!5555')
+        await writeFile(filepath, outputFile.getText(), 'utf8')
+        consola.success(`Type emit!6666:${sourceFile}`)
+      }
     }
-    consola.success(`Type emit33333:${sourceFile}`)
-    for (const outputFile of emitFiles) {
-      const filepath = outputFile.getFilePath()
-      await mkdir(path.dirname(filepath), {
-        recursive: true,
-      })
-      consola.success('Type emit!5555')
-      await writeFile(filepath, outputFile.getText(), 'utf8')
-      consola.success(`Type emit!6666:${sourceFile}`)
-    }
+
     // Promise.all(subTasks)
   }
   //await Promise.all(tasks)
