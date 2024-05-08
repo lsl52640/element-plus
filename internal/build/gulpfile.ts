@@ -50,11 +50,14 @@ export default series(
   runTask('buildFullBundle'),
   runTask('generateTypesDefinitions'),
   runTask('buildHelper'),
-  series(
-    withTaskName('buildThemeChalk', () =>
-      run('pnpm run -C packages/theme-chalk build')
-    ),
-    copyFullStyle
+  parallel(
+
+    series(
+      withTaskName('buildThemeChalk', () =>
+        run('pnpm run -C packages/theme-chalk build')
+      ),
+      copyFullStyle
+    )
   ),
   parallel(copyTypesDefinitions, copyFiles)
 )

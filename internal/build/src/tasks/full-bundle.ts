@@ -161,7 +161,7 @@ export const buildFull = (minify: boolean) => async () => {
   Promise.all([buildFullEntry(minify), buildFullLocale(minify)])
 }
 
-export const buildFullBundle: TaskFunction = () => {
+export const buildFullBundle: TaskFunction = async () => {
   withTaskName('buildFullMinified', buildFull(true))
   withTaskName('buildFull', buildFull(false))
 }

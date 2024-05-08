@@ -95,10 +95,10 @@ const reAttribute: ReAttribute = (value, key) => {
   } else if (key === 'Subtags') {
     return str
       ? `el-${str
-          .replaceAll(/\s*\/\s*/g, '/el-')
-          .replaceAll(/\B([A-Z])/g, '-$1')
-          .replaceAll(/\s+/g, '-')
-          .toLowerCase()}`
+        .replaceAll(/\s*\/\s*/g, '/el-')
+        .replaceAll(/\B([A-Z])/g, '-$1')
+        .replaceAll(/\s+/g, '-')
+        .toLowerCase()}`
       : undefined
   } else {
     return str
@@ -189,7 +189,7 @@ const transformFunction = (str: string) => {
   return `(${params}) => ${returns}`
 }
 
-export const buildHelper: TaskFunction = (done) => {
+export const buildHelper: TaskFunction = async (done) => {
   const { name, version } = getPackageManifest(epPackage)
 
   const tagVer = process.env.TAG_VERSION
