@@ -7,6 +7,7 @@ import VueMacros from 'unplugin-vue-macros/rollup'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import esbuild, { minify as minifyPlugin } from 'rollup-plugin-esbuild'
 import { parallel } from 'gulp'
+import consola from 'consola'
 import chalk from 'chalk'
 import glob from 'fast-glob'
 import { camelCase, upperFirst } from 'lodash-unified'
@@ -154,7 +155,9 @@ async function buildFullLocale(minify: boolean) {
 }
 
 export const buildFull = (minify: boolean) => async () => {
-  chalk.yellow(`Generating definition for file: ${chalk.bold(minify)}`)
+  consola.success(
+    chalk.yellow(`Generating definition for file: ${chalk.bold(minify)}`)
+  )
   Promise.all([buildFullEntry(minify), buildFullLocale(minify)])
 }
 

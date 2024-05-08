@@ -47,18 +47,15 @@ export default series(
   withTaskName('clean', () => run('pnpm run clean')),
   withTaskName('createOutput', () => mkdir(epOutput, { recursive: true })),
   //runTask('buildModules'),
-  parallel(
-    runTask('buildFullBundle'),
-    runTask('generateTypesDefinitions'),
-    runTask('buildHelper'),
-    series(
-      withTaskName('buildThemeChalk', () =>
-        run('pnpm run -C packages/theme-chalk build')
-      ),
-      copyFullStyle
-    )
+  runTask('buildFullBundle'),
+  runTask('generateTypesDefinitions'),
+  runTask('buildHelper'),
+  series(
+    withTaskName('buildThemeChalk', () =>
+      run('pnpm run -C packages/theme-chalk build')
+    ),
+    copyFullStyle
   ),
-
   parallel(copyTypesDefinitions, copyFiles)
 )
 
