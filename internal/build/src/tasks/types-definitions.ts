@@ -66,7 +66,11 @@ export const generateTypesDefinitions = async () => {
       await mkdir(path.dirname(filepath), {
         recursive: true,
       })
-
+      consola.success(
+        chalk.green(
+          `Definition for file2: ${filepath}`
+        )
+      )
       await writeFile(
         filepath,
         pathRewriter('esm')(outputFile.getText()),
