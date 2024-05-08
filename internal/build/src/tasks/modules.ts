@@ -40,7 +40,7 @@ export const buildModules = async () => {
       }),
       commonjs(),
       esbuild({
-        sourceMap: false,
+        sourceMap: true,
         target,
         loaders: {
           '.vue': 'ts',
@@ -59,7 +59,7 @@ export const buildModules = async () => {
         exports: module === 'cjs' ? 'named' : undefined,
         preserveModules: true,
         preserveModulesRoot: epRoot,
-        sourcemap: false,
+        sourcemap: true,
         entryFileNames: `[name].${config.ext}`,
       }
     })
