@@ -43,7 +43,7 @@ export const generateTypesDefinitions = async () => {
   typeCheck(project)
   consola.success('Type check passed!')
 
-  await project.emit({
+  await project.emitSync({
     emitOnlyDtsFiles: true,
   })
   consola.success('Type emit!')
