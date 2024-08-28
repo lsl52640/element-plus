@@ -24,20 +24,7 @@
         height: itemSize + 'px',
       }"
     >
-      <el-icon
-        v-if="icon"
-        :class="[
-          ns.is('leaf', !!node?.isLeaf),
-          ns.is('hidden', hiddenExpandIcon),
-          {
-            expanded: !node?.isLeaf && expanded,
-          },
-          ns.be('node', 'expand-icon'),
-        ]"
-        @click.stop="handleExpandIconClick"
-      >
-        <component :is="icon" />
-      </el-icon>
+      <slot name="icon" />
       <el-checkbox
         v-if="showCheckbox"
         :model-value="checked"
